@@ -1,8 +1,9 @@
 import express from "express"
+import path from "path"
+
 import apiRoutes from "./api/index.js"
 
-// Hardcoded; TODO: move it as variable inside .env
-const apiPath = '/api';
+const apiPath = path.join('/', process.env.API_URL);
 
 const router = express.Router();
 
