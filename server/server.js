@@ -1,12 +1,23 @@
 import express from "express"
 import dotenv from "dotenv"
 
-dotenv.config();
+import routes from "./routes/index.js"
+import db from "./utils/db.js"
 
-const app = express();
+dotenv.config();
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`)
-})
+const app = express();
+
+app.use(routes);
+
+db.connect()
+    .then(() => {
+        console.log('Connected to DB')
+
+        app.listen(PORT, () => {
+            console.log(`Server listening on port ${PORT}`)
+        })
+    })
+    .catch((err) => console.error('err'))
