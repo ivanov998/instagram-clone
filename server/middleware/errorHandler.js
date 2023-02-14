@@ -7,6 +7,8 @@ const errorHandler = (err, req, res, next) => {
         msg: err.message || "Try again later"
     }
 
+    console.error(`Error: ${error.statusCode}: ${error.msg}`)
+
     res.status(error.statusCode).json({ msg: error.msg })
 }
 
