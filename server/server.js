@@ -3,7 +3,7 @@ import dotenv from "dotenv"
 
 import routes from "./routes/index.js"
 import db from "./utils/db.js"
-import errorHandler from "./middlware/errorHandler.js"
+import errorHandler from "./middleware/errorHandler.js"
 
 dotenv.config();
 
