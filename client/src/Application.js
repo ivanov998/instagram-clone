@@ -1,11 +1,11 @@
 import { connect } from "react-redux";
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import ProtectedRoute from "../ProtectedRoute";
-import Discover from "../Discover";
-import SharedLayout from "../SharedLayout";
-import Profile from "../Profile";
-import actions from '../../actions'
+import actions from './actions';
+import MainLayout from "./layouts/Main";
+import ProtectedRoute from "./services/routes/ProtectedRoute";
+import Discover from "./pages/Discover";
+import Profile from "./pages/Profile";
 
 function Application() {
   return (
@@ -13,7 +13,7 @@ function Application() {
       <Routes>
         <Route path='/' element={
           <ProtectedRoute>
-            <SharedLayout />
+            <MainLayout />
           </ProtectedRoute>
           }>
           <Route index element={<Discover />} />

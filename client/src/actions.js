@@ -5,5 +5,5 @@ export default function mapDispatchToProps(dispatch) {
       {
       },
       dispatch
-    )
+    );
 };
