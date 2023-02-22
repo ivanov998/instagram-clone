@@ -1,31 +1,32 @@
 import { connect } from "react-redux";
 import React from "react";
 
-import ContainerFluid from '../../components/ContainerFluid';
-import LoginForm from '../../components/LoginForm';
-import Footer from '../../layouts/Footer';
-import actions from "../../actions"
+import RegisterForm from "../../components/RegisterForm";
 
-const Landing = (props) => {
+import ContainerFluid from '../../components/ContainerFluid';
+import Footer from '../../layouts/Footer';
+import actions from "../../actions";
+
+const Register = (props) => {
 
   const {
     isLoading,
-    login,
-    loginFormChange
+    register,
+    registerFormChange
   } = props;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    login();
+    register();
   }
 
   const handleInputChange = (name, value) => {
-    loginFormChange(name,value);
+    registerFormChange(name,value);
   }
 
   return(
     <ContainerFluid>
-      <LoginForm 
+      <RegisterForm 
         handleSubmit={handleSubmit} 
         handleInputChange={handleInputChange}
         loading={isLoading}
@@ -36,8 +37,8 @@ const Landing = (props) => {
 }
 
 const mapStateToProps = state => ({
-  isLoading: state.loginReducer.isLoading,
-  loginFormData: state.loginReducer.loginFormData
+  isLoading: state.registerReducer.isLoading,
+  registerFormData: state.registerReducer.registerFormData
 })
 
-export default connect(mapStateToProps, actions)(Landing);
+export default connect(mapStateToProps, actions)(Register);

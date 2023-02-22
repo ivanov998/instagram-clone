@@ -8,17 +8,27 @@ const register = async (req, res, next) => {
 
         // Check if there is existing user with email or username
 
-        const { rows } = await db.query(`SELECT FROM users WHERE username=$1 OR email=$2`, [username, email])
+        const { rows: selectedRows } = await db.query(`SELECT FROM users WHERE username=$1 OR email=$2`, [username, email]);
         
-        if (rows.length) {
+        if (selectedRows.length) {
             throw new BadRequestError('Username or email already in use');
         }
 
         if (!username || !email || !password) {
-            throw new BadRequestError('Please provide all values')
+            throw new BadRequestError('Please provide all values');
         }
 
-        res.sendStatus(StatusCodes.OK)
+
+        // TODO: password encrypt and validation
+        const { rows: insertedRows } = await db.query(`INSERT INTO users (username, email, password) VALUES ($1,$2,$3) RETURNING *;`,
+            [username, email, password]);
+
+        if (insertedRows.length) {
+            res.sendStatus(StatusCodes.OK);
+        } else {
+            throw new Error;
+        }
+
     } catch (error) {
         next(error)
     }

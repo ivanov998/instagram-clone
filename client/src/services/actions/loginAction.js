@@ -23,7 +23,10 @@ export const login = () =>  async (dispatch, getState) => {
     try {
         const response = await axios.post('http://localhost:5000/api/auth/login', user);
         console.log(response);
+
     } catch(error) {
         console.log(error);
+    } finally {
+        dispatch({ type: SET_LOGIN_LOADING, payload: false });
     }
 }
