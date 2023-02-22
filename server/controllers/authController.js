@@ -1,10 +1,12 @@
 import { StatusCodes } from "http-status-codes"
+import bcrypt from "bcrypt"
+
 import { BadRequestError } from "../utils/errors.js"
 import db from "../utils/db.js"
 
 const register = async (req, res, next) => {
     try {
-        const { username, email, password } = req.body;
+        let { username, email, password } = req.body;
 
         // Check if there is existing user with email or username
 
@@ -18,6 +20,8 @@ const register = async (req, res, next) => {
             throw new BadRequestError('Please provide all values');
         }
 
+        const salt = await bcrypt.genSalt(10);
+        password = await bcrypt.hash(password, salt)
 
         // TODO: password encrypt and validation
         const { rows: insertedRows } = await db.query(`INSERT INTO users (username, email, password) VALUES ($1,$2,$3) RETURNING *;`,
