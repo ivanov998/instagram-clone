@@ -1,6 +1,7 @@
 import { StatusCodes } from "http-status-codes"
 import bcrypt from "bcrypt"
 
+import { attachCookies, signJwt } from "../utils/auth.js"
 import { BadRequestError, UnauthorizedError } from "../utils/errors.js"
 import db from "../utils/db.js"
 
@@ -21,11 +22,11 @@ const register = async (req, res, next) => {
         }
 
         const salt = await bcrypt.genSalt(10);
-        password = await bcrypt.hash(password, salt);
+        const hashedPassword = await bcrypt.hash(password, salt);
 
         // TODO: password encrypt and validation
         const { rows: insertedRows } = await db.query(`INSERT INTO users (username, email, password) VALUES ($1,$2,$3) RETURNING *;`,
-            [username, email, password]);
+            [username, email, hashedPassword]);
 
         if (insertedRows.length) {
             res.sendStatus(StatusCodes.OK);
@@ -34,7 +35,7 @@ const register = async (req, res, next) => {
         }
 
     } catch (error) {
-        next(error)
+        next(error);
     }
 }
 
@@ -44,21 +45,22 @@ const login = async (req, res, next) => {
         const { login, password } = req.body;
 
         if (!login.length || !password.length) {
-            throw new Error;
+            throw new BadRequestError('Please provide all values');
         }
 
         // TODO: optimize this query
-        const { rows: selectedRows } = await db.query(`SELECT password FROM users WHERE (username=$1 OR email=$1)`, [login]);
+        const { rows: selectedRows } = await db.query(`SELECT id, password FROM users WHERE (username=$1 OR email=$1)`, [login]);
 
         if (!selectedRows.length) {
             throw new UnauthorizedError("The username/email is not registered")
         }
 
-        const retrievedPassword = selectedRows[0].password;
+        const { id: userId, password: retrievedPassword } = selectedRows[0];
+        const isPasswordMatching = await bcrypt.compare(password, retrievedPassword)
 
-        const isMatch = await bcrypt.compare(password, retrievedPassword)
-
-        if (isMatch) {
+        if (isPasswordMatching) {
+            const token = signJwt(userId);
+            attachCookies(res, token);
             res.sendStatus(StatusCodes.OK);
         } else {
             throw new UnauthorizedError("Invalid password")

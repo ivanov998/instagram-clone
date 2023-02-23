@@ -1,6 +1,6 @@
-import { Jwt } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 
-export const attachCookies = ({res, token}) => {
+export const attachCookies = (res, token) => {
     const oneDay = 1000 * 60 * 60 * 24;
 
     res.cookie('token', token, {
@@ -11,6 +11,6 @@ export const attachCookies = ({res, token}) => {
 }
 
 export const signJwt = (userId) => 
-    Jwt.sign({userId}, process.env.JWT_SECRET, {
+    jwt.sign({userId}, process.env.JWT_SECRET, {
         expiresIn: '1d'
     })
