@@ -12,7 +12,7 @@ const Login = ({handleSubmit, handleInputChange, loading}) => {
             <FormGroup
               label="Email address or username" 
               type="text"
-              name="email"
+              name="login"
               placeholder="Enter email"
               onInputChange={(name, value) => handleInputChange(name, value)}
             />

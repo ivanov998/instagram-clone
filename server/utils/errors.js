@@ -13,4 +13,12 @@ class BadRequestError extends CustomAPIError {
     }
 }
 
-export { BadRequestError }
+class UnauthorizedError extends CustomAPIError {
+    constructor (message) {
+        super(message)
+        this.statusCode = StatusCodes.UNAUTHORIZED
+    }
+}
+
+
+export { BadRequestError, UnauthorizedError }

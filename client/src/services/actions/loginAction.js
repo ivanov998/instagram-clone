@@ -16,16 +16,15 @@ export const loginFormChange = (name, value) => {
 }
 
 export const login = () =>  async (dispatch, getState) => {
-    const user = getState().loginReducer.loginFormData;
-    console.log(user);
-    dispatch({ type: SET_LOGIN_LOADING, payload: true });
 
+    const user = getState().loginReducer.loginFormData;
+    dispatch({ type: SET_LOGIN_LOADING, payload: true });
+    
     try {
         const response = await axios.post('http://localhost:5000/api/auth/login', user);
-        console.log(response);
-
+        console.log(response.data.msg);
     } catch(error) {
-        console.log(error);
+        console.log(error.response.data.msg);
     } finally {
         dispatch({ type: SET_LOGIN_LOADING, payload: false });
     }

@@ -23,7 +23,7 @@ export const register = () =>  async (dispatch, getState) => {
 
     try {
         const response = await axios.post('http://localhost:5000/api/auth/register', registerData);
-        console.log(response);
+        console.log(response.data.msg);
 
     } catch(error) {
         console.log(error);
