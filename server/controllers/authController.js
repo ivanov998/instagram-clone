@@ -1,7 +1,7 @@
 import { StatusCodes } from "http-status-codes";
 import bcrypt from "bcrypt";
 
-import { attachCookies, signJwt } from "../utils/auth.js";
+import { attachCookies, removeCookies, signJwt } from "../utils/auth.js";
 import { BadRequestError, UnauthorizedError } from "../utils/errors.js";
 import db from "../utils/db.js";
 
@@ -75,8 +75,11 @@ const login = async (req, res, next) => {
     } catch(error) {
         next(error);
     }
-
 }
 
+const logout = async (req, res) => {
+    removeCookies(res);
+    res.status(StatusCodes.OK);
+}
 
-export { register, login }
+export { register, login, logout }

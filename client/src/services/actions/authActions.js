@@ -55,3 +55,7 @@ export const register = () =>  async (dispatch, getState) => {
         dispatch({ type: SET_AUTH_LOADING, payload: false });
     }
 }
+
+export const logout = () => async () => {
+    await authApi.get('logout');
+}
