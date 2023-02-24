@@ -2,6 +2,8 @@ import express from "express"
 import dotenv from "dotenv"
 import cors from "cors"
 import cookieParser from "cookie-parser"
+import helmet from 'helmet';
+import xss from 'xss-clean'
 
 import routes from "./routes/index.js"
 import db from "./utils/db.js"
@@ -22,6 +24,8 @@ app.use(
     })
 );
 app.use(routes);
+app.use(helmet());
+app.use(xss());
 app.use(errorHandler);
 
 db.connect()
@@ -32,4 +36,4 @@ db.connect()
             console.log(`Server listening on port ${PORT}`)
         })
     })
-    .catch((err) => console.error('err'))
+    .catch((err) => console.error('err'));
