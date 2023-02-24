@@ -1,21 +1,21 @@
 import {
-    LOGIN_FORM_CHANGE,
-    SET_LOGIN_LOADING
-} from "../constants/loginConstants";
+    AUTH_FORM_CHANGE,
+    SET_AUTH_LOADING
+} from "../constants/authConstants";
 
 const initialState = {
-    loginFormData: {},
+    authFormData: {},
     isLoading: false
 }
 
 const loginReducer = (state = initialState, action) => {
     switch (action.type) {
-        case LOGIN_FORM_CHANGE:
+        case AUTH_FORM_CHANGE:
             return {
                 ...state,
-                loginFormData: { ...state.loginFormData, ...action.payload }
+                authFormData: { ...state.authFormData, ...action.payload }
             }
-        case SET_LOGIN_LOADING:
+        case SET_AUTH_LOADING:
             return {
                 ...state,
                 isLoading: action.payload

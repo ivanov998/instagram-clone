@@ -11,7 +11,7 @@ const Landing = (props) => {
   const {
     isLoading,
     login,
-    loginFormChange
+    authFormChange
   } = props;
 
   const handleSubmit = (e) => {
@@ -20,7 +20,7 @@ const Landing = (props) => {
   }
 
   const handleInputChange = (name, value) => {
-    loginFormChange(name,value);
+    authFormChange(name,value);
   }
 
   return(
@@ -36,8 +36,8 @@ const Landing = (props) => {
 }
 
 const mapStateToProps = state => ({
-  isLoading: state.loginReducer.isLoading,
-  loginFormData: state.loginReducer.loginFormData
+  isLoading: state.authReducer.isLoading,
+  authFormData: state.authReducer.authFormData
 })
 
 export default connect(mapStateToProps, actions)(Landing);

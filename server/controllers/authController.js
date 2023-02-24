@@ -1,11 +1,12 @@
-import { StatusCodes } from "http-status-codes"
-import bcrypt from "bcrypt"
+import { StatusCodes } from "http-status-codes";
+import bcrypt from "bcrypt";
 
-import { attachCookies, signJwt } from "../utils/auth.js"
-import { BadRequestError, UnauthorizedError } from "../utils/errors.js"
-import db from "../utils/db.js"
+import { attachCookies, signJwt } from "../utils/auth.js";
+import { BadRequestError, UnauthorizedError } from "../utils/errors.js";
+import db from "../utils/db.js";
 
 const register = async (req, res, next) => {
+    
     try {
         let { username, email, password } = req.body;
 
@@ -52,18 +53,18 @@ const login = async (req, res, next) => {
         const { rows: selectedRows } = await db.query(`SELECT id, password FROM users WHERE (username=$1 OR email=$1)`, [login]);
 
         if (!selectedRows.length) {
-            throw new UnauthorizedError("The username/email is not registered")
+            throw new UnauthorizedError("The username/email is not registered");
         }
 
         const { id: userId, password: retrievedPassword } = selectedRows[0];
-        const isPasswordMatching = await bcrypt.compare(password, retrievedPassword)
+        const isPasswordMatching = await bcrypt.compare(password, retrievedPassword);
 
         if (isPasswordMatching) {
             const token = signJwt(userId);
             attachCookies(res, token);
             res.sendStatus(StatusCodes.OK);
         } else {
-            throw new UnauthorizedError("Invalid password")
+            throw new UnauthorizedError("Invalid password");
         }
     } catch(error) {
         next(error);

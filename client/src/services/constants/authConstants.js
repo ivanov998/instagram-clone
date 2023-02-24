@@ -1,0 +1,2 @@
+export const AUTH_FORM_CHANGE = "AUTH_FORM_CHANGE";
+export const SET_AUTH_LOADING = "SET_AUTH_LOADING";

@@ -1,13 +1,11 @@
 import { bindActionCreators } from "redux";
 
-import * as login from "./services/actions/loginAction"
-import * as register from "./services/actions/registerAction"
+import * as auth from "./services/actions/authActions"
 
 export default function mapDispatchToProps(dispatch) {
     return bindActionCreators(
       {
-        ...login,
-        ...register
+        ...auth
       },
       dispatch
     );

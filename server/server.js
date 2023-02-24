@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
 app.use(routes);
-app.use(errorHandler)
+app.use(errorHandler);
 
 db.connect()
     .then(() => {

@@ -12,7 +12,7 @@ const Register = (props) => {
   const {
     isLoading,
     register,
-    registerFormChange
+    authFormChange
   } = props;
 
   const handleSubmit = (e) => {
@@ -21,7 +21,7 @@ const Register = (props) => {
   }
 
   const handleInputChange = (name, value) => {
-    registerFormChange(name,value);
+    authFormChange(name,value);
   }
 
   return(
@@ -37,8 +37,8 @@ const Register = (props) => {
 }
 
 const mapStateToProps = state => ({
-  isLoading: state.registerReducer.isLoading,
-  registerFormData: state.registerReducer.registerFormData
+  isLoading: state.authReducer.isLoading,
+  authFormData: state.authReducer.authFormData
 })
 
 export default connect(mapStateToProps, actions)(Register);
