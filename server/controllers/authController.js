@@ -45,7 +45,7 @@ const login = async (req, res, next) => {
     try {
         const { login, password } = req.body;
 
-        if (!login.length || !password.length) {
+        if (!login || !password) {
             throw new BadRequestError('Please provide all values');
         }
 
@@ -60,9 +60,15 @@ const login = async (req, res, next) => {
         const isPasswordMatching = await bcrypt.compare(password, retrievedPassword);
 
         if (isPasswordMatching) {
+
             const token = signJwt(userId);
+            
+            if (!token) {
+                throw new Error;
+            }
+            
             attachCookies(res, token);
-            res.sendStatus(StatusCodes.OK);
+            res.status(StatusCodes.OK).json({ token: token });
         } else {
             throw new UnauthorizedError("Invalid password");
         }

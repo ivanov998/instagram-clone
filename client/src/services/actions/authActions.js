@@ -5,6 +5,14 @@ import {
 
 import axios from "axios";
 
+const authApi = axios.create({
+    baseURL: "http://localhost:5000/api/auth",
+    withCredentials: true,
+    headers: {
+        "Content-type": "application/json",
+    },
+});
+
 export const authFormChange = (name, value) => {
     let formData = {};
     formData[name] = value;
@@ -22,7 +30,7 @@ export const login = () =>  async (dispatch, getState) => {
     dispatch({ type: SET_AUTH_LOADING, payload: true });
     
     try {
-        const response = await axios.post('http://localhost:5000/api/auth/login', user);
+        const response = await authApi.post('login', user);
         console.log(response.data.msg);
     } catch(error) {
         console.log(error.response.data.msg);
@@ -38,7 +46,7 @@ export const register = () =>  async (dispatch, getState) => {
     dispatch({ type: SET_AUTH_LOADING, payload: true });
 
     try {
-        const response = await axios.post('http://localhost:5000/api/auth/register', registerData);
+        const response = await authApi.post('register', registerData);
         console.log(response.data.msg);
 
     } catch(error) {
