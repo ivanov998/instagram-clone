@@ -53,7 +53,7 @@ const login = async (req, res, next) => {
         const { rows: selectedRows } = await db.query(`SELECT id, password FROM users WHERE (username=$1 OR email=$1)`, [login]);
 
         if (!selectedRows.length) {
-            throw new UnauthorizedError("The username/email is not registered");
+            throw new UnauthorizedError('The username/email provided is not registered');
         }
 
         const { id: userId, password: retrievedPassword } = selectedRows[0];

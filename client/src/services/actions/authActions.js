@@ -1,7 +1,8 @@
 import {
     AUTH_FORM_CHANGE,
     SET_AUTH_LOADING,
-    SET_AUTH_FORM_ERROR
+    SET_AUTH_FORM_ERROR,
+    SET_AUTH_ERROR
 } from "../constants/authConstants";
 import { allFieldsValidation } from "../utils/validation";
 
@@ -49,9 +50,8 @@ export const login = () => async (dispatch, getState) => {
     
     try {
         const response = await authApi.post('login', user);
-        console.log(response.data.msg);
     } catch(error) {
-        console.log(error.response.data.msg);
+        return dispatch({ type: SET_AUTH_ERROR, payload: error.response.data.msg });
     } finally {
         dispatch({ type: SET_AUTH_LOADING, payload: false });
     }
@@ -87,7 +87,7 @@ export const register = () => async (dispatch, getState) => {
         console.log(response.data.msg);
 
     } catch(error) {
-        console.log(error);
+        return dispatch({ type: SET_AUTH_ERROR, payload: error.response.data.msg });
     } finally {
         dispatch({ type: SET_AUTH_LOADING, payload: false });
     }
