@@ -1,14 +1,16 @@
 import {
     AUTH_FORM_CHANGE,
-    SET_AUTH_LOADING
+    SET_AUTH_LOADING,
+    SET_AUTH_FORM_ERROR
 } from "../constants/authConstants";
 
 const initialState = {
     authFormData: {},
-    isLoading: false
+    isLoading: false,
+    formError: ''
 }
 
-const loginReducer = (state = initialState, action) => {
+const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case AUTH_FORM_CHANGE:
             return {
@@ -20,9 +22,14 @@ const loginReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: action.payload
             }
+        case SET_AUTH_FORM_ERROR:
+            return {
+                ...state,
+                formError: action.payload
+            }
         default: 
             return state;
     }
 }
 
-export default loginReducer;
+export default authReducer;

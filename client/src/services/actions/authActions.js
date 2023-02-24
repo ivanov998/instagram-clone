@@ -1,7 +1,9 @@
 import {
     AUTH_FORM_CHANGE,
-    SET_AUTH_LOADING
+    SET_AUTH_LOADING,
+    SET_AUTH_FORM_ERROR
 } from "../constants/authConstants";
+import { allFieldsValidation } from "../utils/validation";
 
 import axios from "axios";
 
@@ -23,9 +25,25 @@ export const authFormChange = (name, value) => {
     }
 }
 
-export const login = () =>  async (dispatch, getState) => {
+export const login = () => async (dispatch, getState) => {
 
     const user = getState().authReducer.authFormData;
+
+    const rules = {
+        login: 'required|min:6',
+        password: 'required|min:6'
+    }
+
+    const { isValid, errors } = allFieldsValidation(user, rules, {
+        'required.login': 'Username or email is required.',
+        'min.login': 'Username or email must be at least 6 characters.',
+        'required.password': 'Password is required.',
+        'min.password': 'Password must be at least 6 characters.'
+    });
+  
+    if (!isValid) {
+        return dispatch({ type: SET_AUTH_FORM_ERROR, payload: errors });
+    }
 
     dispatch({ type: SET_AUTH_LOADING, payload: true });
     
@@ -39,9 +57,28 @@ export const login = () =>  async (dispatch, getState) => {
     }
 }
 
-export const register = () =>  async (dispatch, getState) => {
+export const register = () => async (dispatch, getState) => {
 
     const registerData = getState().authReducer.authFormData;
+
+    const rules = {
+        username: 'required|min:6',
+        email: 'required|email',
+        password: 'required|min:6'
+    }
+
+    const { isValid, errors } = allFieldsValidation(registerData, rules, {
+        'required.username': 'Username is required.',
+        'min.username': 'Username or email must be at least 6 characters.',
+        'required.email': 'Email is required.',
+        'email.email': 'Email format is invalid.',
+        'required.password': 'Password is required.',
+        'min.password': 'Password must be at least 6 characters.'
+    });
+
+    if (!isValid) {
+        return dispatch({ type: SET_AUTH_FORM_ERROR, payload: errors });
+    }
 
     dispatch({ type: SET_AUTH_LOADING, payload: true });
 
