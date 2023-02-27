@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
 import React from "react";
 
-import RegisterForm from "../../components/RegisterForm";
+import Container from 'react-bootstrap/Container';
 
-import ContainerFluid from '../../components/ContainerFluid';
+import RegisterForm from "../../components/RegisterForm";
 import Footer from '../../layouts/Footer';
 import actions from "../../actions";
 
@@ -25,14 +25,14 @@ const Register = (props) => {
   }
 
   return(
-    <ContainerFluid>
+    <Container>
       <RegisterForm 
         handleSubmit={handleSubmit} 
         handleInputChange={handleInputChange}
         loading={isLoading}
       />
       <Footer />
-    </ContainerFluid>
+    </Container>
   );
 }
 

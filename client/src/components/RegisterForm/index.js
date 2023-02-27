@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from '../common/Button/index.js'
-import FormGroup from '../common/FormGroup.js/index.js'
+import FormInput from '../common/FormInput'
 import "./styles.css"
 
 const RegisterForm = ({handleSubmit, handleInputChange, loading}) => {
@@ -9,21 +9,21 @@ const RegisterForm = ({handleSubmit, handleInputChange, loading}) => {
         <form className="Auth-form" onSubmit={handleSubmit}>
           <div className="Auth-form-content">
             <h3 className="Auth-form-title">Sign Up</h3>
-            <FormGroup
+            <FormInput
               label="Username"
               type="text"
               name="username"
               placeholder="Enter username"
               onInputChange={(name, value) => handleInputChange(name, value)}
             />
-            <FormGroup
+            <FormInput
               label="Email address"
               type="email"
               name="email"
               placeholder="Enter email"
               onInputChange={(name, value) => handleInputChange(name, value)}
             />
-            <FormGroup
+            <FormInput
               label="Password"
               type="password"
               name="password"
