@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import "./styles.css"
 import LoginForm from '../../components/LoginForm';
 import actions from "../../actions"
 import landingImage from '../../assets/images/landing-1.svg'
@@ -29,7 +30,7 @@ const Landing = (props) => {
   }
 
   return(
-    <Container className="d-flex justify-content-center align-items-md-center min-vh-100" style={{ maxWidth: "992px" }}>
+    <Container className="d-flex justify-content-center align-items-md-center min-vh-100">
       <Row className="g-0 mt-5 mt-md-0">
         <Col md={7} className="d-none d-md-block">
             <img className="img-fluid w-100" src={landingImage} width={555} height={387} />

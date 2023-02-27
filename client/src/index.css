@@ -7,7 +7,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: "Billabong";   /*Can be any text*/
+  src: local("Billabong"),
+    url("./assets/fonts/Billabong.ttf") format("truetype");
 }
