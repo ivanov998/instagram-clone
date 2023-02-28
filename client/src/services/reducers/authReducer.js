@@ -2,7 +2,8 @@ import {
     AUTH_FORM_CHANGE,
     SET_AUTH_LOADING,
     SET_AUTH_FORM_ERROR,
-    SET_AUTH_ERROR
+    SET_AUTH_ERROR,
+    CLEAR_ERRORS
 } from "../constants/authConstants";
 
 const initialState = {
@@ -33,6 +34,12 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 authError: action.payload
+            }
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                authError: '',
+                formError: ''
             }
         default: 
             return state;

@@ -5,7 +5,13 @@ import Button from 'react-bootstrap/Button';
 import FormInput from '../common/FormInput'
 import "./styles.css"
 
-const Login = ({handleSubmit, handleInputChange, loading}) => {
+const renderAuthErrorMessage = (errorMessage) => {
+  return (
+    <p className="text-danger text-center mb-2">{errorMessage}</p>
+  )
+}
+
+const Login = ({handleSubmit, handleInputChange, loading, formError, authError}) => {
   return (
     <>
       <div className="login-form p-4 mx-4">
@@ -19,6 +25,7 @@ const Login = ({handleSubmit, handleInputChange, loading}) => {
               name="login"
               placeholder="Username or email"
               onInputChange={(name, value) => handleInputChange(name, value)}
+              error={formError.login}
             />
           </div>
           <div className="mb-3">
@@ -27,11 +34,13 @@ const Login = ({handleSubmit, handleInputChange, loading}) => {
               name="password"
               placeholder="Password"
               onInputChange={(name, value) => handleInputChange(name, value)}
+              error={formError.password}
               />
           </div>        
           <div className="mb-5">
             <Button variant="primary" type="submit" className="w-100 py-1" disabled={loading}>Log in</Button>
           </div>
+          {authError && renderAuthErrorMessage(authError)}
           <div className="text-center">
             <Link to="#">Forgot password?</Link>
           </div>

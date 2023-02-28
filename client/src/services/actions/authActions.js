@@ -2,7 +2,8 @@ import {
     AUTH_FORM_CHANGE,
     SET_AUTH_LOADING,
     SET_AUTH_FORM_ERROR,
-    SET_AUTH_ERROR
+    SET_AUTH_ERROR,
+    CLEAR_ERRORS
 } from "../constants/authConstants";
 import { allFieldsValidation } from "../utils/validation";
 
@@ -35,13 +36,15 @@ export const login = () => async (dispatch, getState) => {
         password: 'required|min:6'
     }
 
+    dispatch({ type: CLEAR_ERRORS });
+
     const { isValid, errors } = allFieldsValidation(user, rules, {
         'required.login': 'Username or email is required.',
         'min.login': 'Username or email must be at least 6 characters.',
         'required.password': 'Password is required.',
         'min.password': 'Password must be at least 6 characters.'
     });
-  
+
     if (!isValid) {
         return dispatch({ type: SET_AUTH_FORM_ERROR, payload: errors });
     }

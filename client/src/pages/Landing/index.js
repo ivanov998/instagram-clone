@@ -16,6 +16,8 @@ const Landing = (props) => {
 
   const {
     isLoading,
+    formError,
+    authError,
     login,
     authFormChange
   } = props;
@@ -33,13 +35,15 @@ const Landing = (props) => {
     <Container className="d-flex justify-content-center align-items-md-center min-vh-100">
       <Row className="g-0 mt-5 mt-md-0">
         <Col md={7} className="d-none d-md-block">
-            <img className="img-fluid w-100" src={landingImage} width={555} height={387} />
+            <img alt="landing" className="img-fluid w-100" src={landingImage} width={555} height={387} />
         </Col>
         <Col md={5}>
           <LoginForm
             handleSubmit={handleSubmit} 
             handleInputChange={handleInputChange}
             loading={isLoading}
+            formError={formError}
+            authError={authError}
           />
         </Col>
       </Row>
@@ -50,6 +54,8 @@ const Landing = (props) => {
 
 const mapStateToProps = state => ({
   isLoading: state.authReducer.isLoading,
+  formError: state.authReducer.formError,
+  authError: state.authReducer.authError,
   authFormData: state.authReducer.authFormData
 })
 
