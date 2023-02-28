@@ -54,7 +54,10 @@ export const login = () => async (dispatch, getState) => {
     try {
         await authApi.post('login', user);
     } catch(error) {
-        return dispatch({ type: SET_AUTH_ERROR, payload: error.response.data.msg });
+        return dispatch({ 
+            type: SET_AUTH_ERROR,
+            payload: error.response ? error.response.data.msg : error.message 
+        });
     } finally {
         dispatch({ type: SET_AUTH_LOADING, payload: false });
     }
@@ -88,7 +91,10 @@ export const register = () => async (dispatch, getState) => {
     try {
         await authApi.post('register', registerData);
     } catch(error) {
-        return dispatch({ type: SET_AUTH_ERROR, payload: error.response.data.msg });
+        return dispatch({ 
+            type: SET_AUTH_ERROR,
+            payload: error.response ? error.response.data.msg : error.message 
+        });
     } finally {
         dispatch({ type: SET_AUTH_LOADING, payload: false });
     }
