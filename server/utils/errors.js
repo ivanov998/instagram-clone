@@ -20,5 +20,4 @@ class UnauthorizedError extends CustomAPIError {
     }
 }
 
-
 export { BadRequestError, UnauthorizedError }
