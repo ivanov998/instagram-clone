@@ -3,14 +3,19 @@ import {
     SET_AUTH_LOADING,
     SET_AUTH_FORM_ERROR,
     SET_AUTH_ERROR,
-    CLEAR_ERRORS
+    CLEAR_ERRORS,
+    SET_USER_AUTHENTICATED,
+    CLEAR_USER_AUTHENTICATED,
+    SETUP_USER
 } from "../constants/authConstants";
 
 const initialState = {
     authFormData: {},
     isLoading: false,
     formError: '',
-    authError: ''
+    authError: '',
+    authenticated: false,
+    user: {}
 }
 
 const authReducer = (state = initialState, action) => {
@@ -40,6 +45,21 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 authError: '',
                 formError: ''
+            }
+        case SET_USER_AUTHENTICATED:
+            return {
+                ...state,
+                authenticated: true
+            }
+        case CLEAR_USER_AUTHENTICATED:
+            return {
+                ...state,
+                authenticated: false
+            }
+        case SETUP_USER:
+            return {
+                ...state,
+                user: action.payload
             }
         default: 
             return state;

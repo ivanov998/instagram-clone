@@ -1,7 +1,7 @@
-import "./styles.css";
+import { faHomeAlt, faSearch, faCompass, faPlay } from "@fortawesome/free-solid-svg-icons";
 
-import { faHomeAlt, faSearch, faCompass, faPlay } from '@fortawesome/free-solid-svg-icons'
 import NavItem from "./NavItem";
+import "./styles.css";
 
 const Sidebar = () => {
 
@@ -10,10 +10,12 @@ const Sidebar = () => {
         { icon: faSearch, text: "Search", link: "#" },
         { icon: faCompass, text: "Discover", link: "#" },
         { icon: faPlay, text: "Reels", link: "#" }
-    ]
+    ];
 
     const renderNavItems = () => 
-        navItems.map((navItem,id) => <NavItem key={id} icon={navItem.icon} text={navItem.text} link={navItem.link} />);
+        navItems.map((navItem,id) => 
+            <NavItem key={id} icon={navItem.icon} text={navItem.text} link={navItem.link} />
+        );
     
     return (
         <div className="sidebar min-vh-100 py-1">
@@ -24,6 +26,7 @@ const Sidebar = () => {
                 {renderNavItems()}
             </div>
         </div>
-  )
+  );
 }
-export default Sidebar
+
+export default Sidebar;

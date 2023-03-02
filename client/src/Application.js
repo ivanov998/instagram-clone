@@ -15,6 +15,7 @@ function Application() {
     <BrowserRouter>
       <Routes>
         <Route path="/register" element={<Register />} />
+        {/*  */}
         <Route path='/' element={
           <ProtectedRoute>
             <MainLayout />
@@ -22,6 +23,7 @@ function Application() {
           }>
           <Route index element={<Discover />} />
         </Route>
+
         {/* <Route path="*" element={<Error />} /> */}
       </Routes>
     </BrowserRouter>

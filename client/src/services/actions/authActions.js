@@ -3,7 +3,10 @@ import {
     SET_AUTH_LOADING,
     SET_AUTH_FORM_ERROR,
     SET_AUTH_ERROR,
-    CLEAR_ERRORS
+    CLEAR_ERRORS,
+    SET_USER_AUTHENTICATED,
+    CLEAR_USER_AUTHENTICATED,
+    SETUP_USER
 } from "../constants/authConstants";
 import { allFieldsValidation } from "../utils/validation";
 
@@ -59,6 +62,7 @@ export const login = () => async (dispatch, getState) => {
             payload: error.response ? error.response.data.msg : error.message 
         });
     } finally {
+        dispatch({ type: SET_USER_AUTHENTICATED });
         dispatch({ type: SET_AUTH_LOADING, payload: false });
     }
 }
@@ -102,4 +106,17 @@ export const register = () => async (dispatch, getState) => {
 
 export const logout = () => async () => {
     await authApi.get('logout');
+}
+
+export const getCurrentUser = () => async (dispatch, getState) => {
+    try {
+        const response = await authApi.get('getCurrentUser');
+        dispatch({ type: SET_USER_AUTHENTICATED });
+        dispatch({ type: SETUP_USER, payload: response.data });
+    } catch(error) {
+        return dispatch({ 
+            type: CLEAR_USER_AUTHENTICATED
+        });
+    } finally {
+    }
 }

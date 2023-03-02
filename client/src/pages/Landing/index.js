@@ -10,8 +10,6 @@ import LoginForm from '../../components/LoginForm';
 import actions from "../../actions"
 import landingImage from '../../assets/images/landing-1.svg'
 
-
-
 const Landing = (props) => {
 
   const {

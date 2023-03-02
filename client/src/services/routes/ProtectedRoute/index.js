@@ -1,15 +1,27 @@
+import { connect } from "react-redux";
+import { useEffect } from "react";
+
+import actions from "../../../actions"
 import Landing from "../../../pages/Landing";
 
-const ProtectedRoute = ({children}) => {
-  
-    // TODO: make it a real variable
-    const isLoggedIn = false;
+const ProtectedRoute = (props) => {
+
+    const { getCurrentUser, authenticated } = props;
+
+    useEffect(() => {
+        if (!authenticated)
+            getCurrentUser()
+    }, [])
     
-    if (!isLoggedIn) {
+    if (!authenticated) {
         return <Landing />;
     }
 
-    return children;
+    return props.children;
 }
 
-export default ProtectedRoute;
+const mapStateToProps = state => ({
+    authenticated: state.authReducer.authenticated
+  })
+  
+export default connect(mapStateToProps, actions)(ProtectedRoute);
