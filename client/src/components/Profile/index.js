@@ -1,6 +1,8 @@
-const Profile = () => {
+const Profile = ({user}) => {
+
+  const { username, email } = user;
   return (
-    <div>{user}</div>
+    <div>{username}{email}</div>
   )
 }
 export default Profile

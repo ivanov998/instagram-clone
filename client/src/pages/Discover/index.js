@@ -1,8 +1,21 @@
-const Discover = () => {
+import Profile from "../../components/Profile";
+import { connect } from "react-redux";
+import actions from "../../actions";
 
-  return (
-    <div>Discover</div>
-  );
+const Discover = (props) => {
+
+    const { user, logout } = props;
+
+    return (
+      <div>Discover
+        <button onClick={() => logout()}>Logout</button>
+       <Profile user={user}/>
+      </div>
+    );
 }
 
-export default Discover;
+const mapStateToProps = (state) => ({
+  user: state.authReducer.user
+});
+
+export default connect(mapStateToProps, actions)(Discover);

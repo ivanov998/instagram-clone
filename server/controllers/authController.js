@@ -95,9 +95,14 @@ const getCurrentUser = async (req, res, next) => {
     }
 }
 
-const logout = async (req, res) => {
-    removeCookies(res);
-    res.status(StatusCodes.OK);
+const logout = async (req, res, next) => {
+
+    try {
+        removeCookies(res);
+        res.sendStatus(StatusCodes.OK);
+    } catch(error) {
+        next(error);
+    }
 }
 
 export { register, login, getCurrentUser, logout }

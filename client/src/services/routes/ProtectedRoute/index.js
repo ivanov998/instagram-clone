@@ -9,8 +9,9 @@ const ProtectedRoute = (props) => {
     const { getCurrentUser, authenticated, userLoading } = props;
 
     useEffect(() => {
-        if (!authenticated)
+        if (!authenticated) {
             getCurrentUser()
+        }
     }, []);
 
     if (userLoading) {
