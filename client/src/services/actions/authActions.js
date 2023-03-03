@@ -6,6 +6,7 @@ import {
     CLEAR_ERRORS,
     SET_USER_AUTHENTICATED,
     CLEAR_USER_AUTHENTICATED,
+    SETUP_USER_BEGIN,
     SETUP_USER
 } from "../constants/authConstants";
 import { allFieldsValidation } from "../utils/validation";
@@ -109,14 +110,12 @@ export const logout = () => async () => {
 }
 
 export const getCurrentUser = () => async (dispatch, getState) => {
+    dispatch({ type: SETUP_USER_BEGIN });
     try {
         const response = await authApi.get('getCurrentUser');
         dispatch({ type: SET_USER_AUTHENTICATED });
         dispatch({ type: SETUP_USER, payload: response.data });
     } catch(error) {
-        return dispatch({ 
-            type: CLEAR_USER_AUTHENTICATED
-        });
-    } finally {
+        return dispatch({ type: CLEAR_USER_AUTHENTICATED });
     }
 }
