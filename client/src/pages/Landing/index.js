@@ -30,7 +30,7 @@ const Landing = (props) => {
   }
 
   return(
-    <Container className="d-flex justify-content-center align-items-md-center min-vh-100">
+    <Container className="login-container d-flex justify-content-center align-items-md-center min-vh-100">
       <Row className="g-0 mt-5 mt-md-0">
         <Col md={7} className="d-none d-md-block">
             <img alt="landing" className="img-fluid w-100" src={landingImage} width={555} height={387} />

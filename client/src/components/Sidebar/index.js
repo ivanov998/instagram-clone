@@ -18,7 +18,7 @@ const Sidebar = () => {
         );
     
     return (
-        <div className="sidebar min-vh-100 py-1">
+        <div className="sidebar min-vh-100 py-1 position-fixed">
             <div className="sidebar-logo logo ms-4 mt-5">
                 <h1>Instaclone</h1>
             </div>

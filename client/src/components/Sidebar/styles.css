@@ -1,5 +1,10 @@
+:root {
+    /* TODO: different width on different screen size */
+    --sidebar-width: 15.3rem;
+}
+
 .sidebar {
-    width: 15.3rem;
+    width: var(--sidebar-width);
     border-right: 1px solid #dcdcdc;
 }
 
