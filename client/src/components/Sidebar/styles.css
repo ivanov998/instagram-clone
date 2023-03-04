@@ -1,11 +1,15 @@
 :root {
     /* TODO: different width on different screen size */
-    --sidebar-width: 15.3rem;
+    --sidebar-width: 21rem;
 }
 
 .sidebar {
     width: var(--sidebar-width);
     border-right: 1px solid #dcdcdc;
+}
+
+.sidebar-logo {
+    font-size: 18px !important;
 }
 
 .nav-item {

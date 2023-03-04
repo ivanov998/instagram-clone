@@ -1,4 +1,4 @@
-import { faHomeAlt, faSearch, faCompass, faPlay } from "@fortawesome/free-solid-svg-icons";
+import { faHomeAlt, faSearch, faCompass, faPlay, faPaperPlane, faHeart, faPlusSquare, faUserCircle, faBars } from "@fortawesome/free-solid-svg-icons";
 
 import NavItem from "./NavItem";
 import "./styles.css";
@@ -8,8 +8,12 @@ const Sidebar = () => {
     const navItems = [
         { icon: faHomeAlt, text: "Home", link: "#" },
         { icon: faSearch, text: "Search", link: "#" },
-        { icon: faCompass, text: "Discover", link: "#" },
-        { icon: faPlay, text: "Reels", link: "#" }
+        { icon: faCompass, text: "Explore", link: "#" },
+        { icon: faPlay, text: "Reels", link: "#" },
+        { icon: faPaperPlane, text: "Messages", link: "#" },
+        { icon: faHeart, text: "Notifications", link: "#" },
+        { icon: faPlusSquare, text: "Create", link: "#" },
+        { icon: faUserCircle, text: "Profile", link: "#" },
     ];
 
     const renderNavItems = () => 
@@ -18,12 +22,15 @@ const Sidebar = () => {
         );
     
     return (
-        <div className="sidebar min-vh-100 py-1 position-fixed">
-            <div className="sidebar-logo logo ms-4 mt-5">
+        <div className="sidebar min-vh-100 py-1 position-fixed d-flex flex-column ">
+            <div className="sidebar-logo logo ms-4 mt-4">
                 <h1>Instaclone</h1>
             </div>
-            <div className="mt-5 px-2">
+            <div className="mt-3 px-2 flex-grow-1">
                 {renderNavItems()}
+            </div>
+            <div className="ms-2 mb-1">
+                <NavItem icon={faBars} text="More" link="#" />
             </div>
         </div>
   );
