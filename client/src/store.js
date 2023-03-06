@@ -1,5 +1,4 @@
 import { configureStore, compose, applyMiddleware} from '@reduxjs/toolkit';
-import { routerMiddleware } from 'react-router-redux'
 import thunk from 'redux-thunk';
 
 import reducers from './reducers';

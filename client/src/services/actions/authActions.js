@@ -14,7 +14,6 @@ import { allFieldsValidation } from "../utils/validation";
 
 import axios from "axios";
 import Cookies from 'js-cookie';
-import { push } from "connected-react-router";
 
 const authApi = axios.create({
     baseURL: "http://localhost:5000/api/auth",

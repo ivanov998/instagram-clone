@@ -1,0 +1,10 @@
+.avatar {
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    width: 60px;
+    height: 60px;
+}
+
+.avatar.default {
+    background-color: #b4b4b4;
+}

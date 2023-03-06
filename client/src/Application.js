@@ -4,7 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import actions from './actions';
 import MainLayout from "./layouts/Main";
 import ProtectedRoute from "./services/routes/ProtectedRoute";
-import Discover from "./pages/Discover";
+import Home from "./pages/Home";
+import Explore from "./pages/Explore";
 import Register from "./pages/Register";
 
 
@@ -21,7 +22,7 @@ function Application() {
             <MainLayout />
           </ProtectedRoute>
           }>
-          <Route index element={<Discover />} />
+          <Route index element={<Home />} />
         </Route>
 
         {/* <Route path="*" element={<Error />} /> */}
