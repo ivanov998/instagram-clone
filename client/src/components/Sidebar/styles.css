@@ -18,8 +18,10 @@
 
 .sidebar .icon-wrapper {
     width: 24px;
+    height: 24px;
     display: inline-block;
-    font-size:22px;
+    font-size: 22px;
+    text-align: center;
 }
 
 .nav-item .label {

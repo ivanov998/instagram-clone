@@ -29,7 +29,7 @@ const Sidebar = () => {
             <div className="mt-3 px-2 flex-grow-1">
                 {renderNavItems()}
             </div>
-            <div className="ms-2 mb-1">
+            <div className="ms-2 mb-2">
                 <NavItem icon={faBars} text="More" link="#" />
             </div>
         </div>
