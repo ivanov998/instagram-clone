@@ -1,5 +1,12 @@
 :root {
-    --sidebar-width: 4.5rem;
+    --sidebar-width: 0px;
+}
+
+/* > sm */
+@media (min-width: 768px) {
+    :root {
+        --sidebar-width: 4.5rem;
+    }
 }
 
 /* > xl */
