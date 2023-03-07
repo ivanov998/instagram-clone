@@ -1,9 +1,14 @@
 import { faHomeAlt, faSearch, faCompass, faPlay, faPaperPlane, faHeart, faPlusSquare, faUserCircle, faBars } from "@fortawesome/free-solid-svg-icons";
+import { connect } from "react-redux";
 
+import actions from "../../actions";
 import NavItem from "./NavItem";
 import "./styles.css";
 
-const Sidebar = () => {
+
+const Sidebar = (props) => {
+
+    const { logout } = props;
 
     const navItems = [
         { icon: faHomeAlt, text: "Home", link: "#" },
@@ -32,11 +37,11 @@ const Sidebar = () => {
             <div className="ms-2 mb-2">
                 <NavItem icon={faBars} text="More" link="#" dropdownId="more"/>
                 <div className="dropdown-menu" aria-labelledby="more">
-                    <a className="dropdown-item" href="#">Log out</a>
+                    <a className="dropdown-item" href="#" onClick={() => logout()}>Log out</a>
                 </div>
             </div>
         </div>
   );
 }
 
-export default Sidebar;
+export default connect(null, actions)(Sidebar);
