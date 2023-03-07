@@ -5,7 +5,7 @@ const Suggestions = ({user}) => {
   const { username, avatar } = user;
 
   return (
-    <>
+    <div className="suggestions-column">
       <div className="profile">
         <div className="flex-row align-items-center d-flex">
           <div className={`avatar ${avatar ? "" : "default"} overflow-hidden`}>
@@ -22,7 +22,7 @@ const Suggestions = ({user}) => {
       <div className="suggestions">
         {/* TODO: render suggestions from the suggestions prop */}
       </div>
-    </>
+    </div>
   );
 }
 export default Suggestions;

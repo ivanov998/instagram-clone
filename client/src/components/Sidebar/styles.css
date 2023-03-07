@@ -1,5 +1,5 @@
 :root {
-    --sidebar-width: 6rem;
+    --sidebar-width: 4.5rem;
 }
 
 /* > xl */
@@ -9,7 +9,7 @@
     }
 }
 
-/* > xxl */
+/* > xxxxl */
 @media (min-width: 1920px) {
     :root {
         --sidebar-width: 21rem;

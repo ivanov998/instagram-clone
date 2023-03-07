@@ -12,12 +12,13 @@ const Home = (props) => {
 
     const { user } = props;
 
+    // TODO: Find a better way to hide the right column
     return (
         <Row className="home-layout mx-auto mt-5">
-            <Col md={8}>
+            <Col lg={8} md={12}>
                 <Feed />
             </Col>
-            <Col md={4}>
+            <Col lg={4} className="d-none d-lg-block">
                 <Suggestions user={user} />
             </Col>
         </Row>
