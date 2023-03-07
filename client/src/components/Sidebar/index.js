@@ -2,7 +2,8 @@ import { faHomeAlt, faSearch, faCompass, faPlay, faPaperPlane, faHeart, faPlusSq
 import { connect } from "react-redux";
 
 import actions from "../../actions";
-import NavItem from "./NavItem";
+import NavItem from "../common/NavItem";
+import Logo from "../common/Logo";
 import mobileLogo from "../../assets/images/logo/mobile-logo.svg";
 import "./styles.css";
 
@@ -24,15 +25,19 @@ const Sidebar = (props) => {
 
     const renderNavItems = () => 
         navItems.map((navItem,id) => 
-            <NavItem key={id} icon={navItem.icon} text={navItem.text} link={navItem.link} />
+            <NavItem 
+                key={id} 
+                icon={navItem.icon} 
+                text={navItem.text} 
+                link={navItem.link}
+                className="my-2 mx-2 p-2 text-dark"
+            />
         );
     
     return (
         <div className="sidebar min-vh-100 py-1 position-fixed flex-column d-none d-md-flex">
             <div className="logo-wrapper">
-                <div className="sidebar-logo logo ms-4 mt-4 d-none d-xl-block">
-                    <h1>Instaclone</h1>
-                </div>
+                <Logo className="ms-4 mt-4 d-none d-xl-block" />
                 <div className="mobile-logo text-center mt-4 d-block d-xl-none">
                     <img src={mobileLogo} alt="logo" width="35px" height="35px" />
                 </div>
@@ -41,7 +46,13 @@ const Sidebar = (props) => {
                 {renderNavItems()}
             </div>
             <div className="ms-2 mb-2">
-                <NavItem icon={faBars} text="More" link="#" dropdownId="more"/>
+                <NavItem 
+                    icon={faBars} 
+                    text="More" 
+                    link="#" 
+                    dropdownId="more"
+                    className="my-2 mx-2 p-2 text-dark"
+                />
                 <div className="dropdown-menu" aria-labelledby="more">
                     <a className="dropdown-item" href="#" onClick={() => logout()}>Log out</a>
                 </div>

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import Button from 'react-bootstrap/Button';
 import FormInput from '../common/FormInput'
 import "./styles.css"
+import Logo from '../common/Logo';
 
 const renderAuthErrorMessage = (errorMessage) => {
   return (
@@ -15,9 +16,7 @@ const Login = ({handleSubmit, handleInputChange, loading, formError, authError})
   return (
     <>
       <div className="login-form p-4 mx-4">
-        <div className="logo text-center mt-3 mb-4">
-          <h1>Instaclone</h1>
-        </div>
+        <Logo className="text-center mt-3 mb-4"/>
         <form onSubmit={handleSubmit}>
           <div className="mb-2">
             <FormInput 
