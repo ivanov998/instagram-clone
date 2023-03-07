@@ -30,7 +30,10 @@ const Sidebar = () => {
                 {renderNavItems()}
             </div>
             <div className="ms-2 mb-2">
-                <NavItem icon={faBars} text="More" link="#" />
+                <NavItem icon={faBars} text="More" link="#" dropdownId="more"/>
+                <div className="dropdown-menu" aria-labelledby="more">
+                    <a className="dropdown-item" href="#">Log out</a>
+                </div>
             </div>
         </div>
   );
