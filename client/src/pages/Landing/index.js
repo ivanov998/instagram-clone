@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 import "./styles.css"
 import LoginForm from '../../components/LoginForm';
 import actions from "../../actions"
-import landingImage from '../../assets/images/landing-1.svg'
+import landingImage from '../../assets/images/landing/landing-1.svg'
 
 const Landing = (props) => {
 

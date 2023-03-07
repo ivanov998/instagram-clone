@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import actions from "../../actions";
 import NavItem from "./NavItem";
+import mobileLogo from "../../assets/images/logo/mobile-logo.svg";
 import "./styles.css";
 
 
@@ -28,8 +29,13 @@ const Sidebar = (props) => {
     
     return (
         <div className="sidebar min-vh-100 py-1 position-fixed flex-column d-none d-md-flex">
-            <div className="sidebar-logo logo ms-4 mt-4">
-                <h1>Instaclone</h1>
+            <div className="logo-wrapper">
+                <div className="sidebar-logo logo ms-4 mt-4 d-none d-xl-block">
+                    <h1>Instaclone</h1>
+                </div>
+                <div className="mobile-logo text-center mt-4 d-block d-xl-none">
+                    <img src={mobileLogo} alt="logo" width="35px" height="35px" />
+                </div>
             </div>
             <div className="mt-3 px-2 flex-grow-1">
                 {renderNavItems()}
