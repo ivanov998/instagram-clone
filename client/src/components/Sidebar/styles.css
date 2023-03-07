@@ -28,24 +28,7 @@
     border-right: 1px solid #dcdcdc;
 }
 
-.nav-item {
-    text-decoration: none;
-}
-
-.sidebar .icon-wrapper {
-    width: 24px;
-    height: 24px;
-    display: inline-block;
-    font-size: 22px;
-    text-align: center;
-}
-
-.nav-item .label {
-    font-size: 16px;
-    vertical-align: text-bottom;
-}
-
-.nav-item:hover {
+.sidebar .nav-item:hover {
     background-color: #f3f3f3;
     transition: background-color 0.2s;
 }

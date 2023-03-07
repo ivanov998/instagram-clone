@@ -1,5 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import "./styles.css";
+
 const NavItem = ({icon, text, link, dropdownId, className}) => {
   
     const defaultClassNames = "nav-item d-block ";

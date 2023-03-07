@@ -1,0 +1,21 @@
+.nav-item .icon-wrapper svg {
+    width: 24px;
+    height: 24px;
+}
+
+.nav-item {
+    text-decoration: none;
+}
+
+.nav-item .icon-wrapper {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    font-size: 22px;
+    text-align: center;
+}
+
+.nav-item .label {
+    font-size: 16px;
+    vertical-align: text-bottom;
+}
