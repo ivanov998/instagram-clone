@@ -7,11 +7,11 @@ import "./styles.css";
 
 const TopNavbar = () => {
   return (
-    <div className="top-navbar w-100 position-fixed d-block d-md-none px-2 bg-white">
+    <div className="top-navbar w-100 position-fixed d-block d-md-none px-2 py-2 bg-white">
         <div className="align-items-center justify-content-end d-flex">
             <Logo className="me-auto ms-2" />
             <SearchBar />
-            <NavItem icon={faHeart} link="#" className="my-2 mx-2 p-2 text-dark" />
+            <NavItem icon={faHeart} link="#" className="mx-3 text-dark" />
         </div>
     </div>
   );

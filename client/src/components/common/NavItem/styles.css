@@ -1,6 +1,7 @@
 .nav-item .icon-wrapper svg {
     width: 24px;
     height: 24px;
+    display: block;
 }
 
 .nav-item {
@@ -17,5 +18,5 @@
 
 .nav-item .label {
     font-size: 16px;
-    vertical-align: text-bottom;
+    vertical-align: top;
 }
