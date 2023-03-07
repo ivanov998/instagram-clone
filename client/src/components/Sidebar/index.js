@@ -27,7 +27,7 @@ const Sidebar = (props) => {
         );
     
     return (
-        <div className="sidebar min-vh-100 py-1 position-fixed d-flex flex-column ">
+        <div className="sidebar min-vh-100 py-1 position-fixed flex-column d-none d-md-flex">
             <div className="sidebar-logo logo ms-4 mt-4">
                 <h1>Instaclone</h1>
             </div>

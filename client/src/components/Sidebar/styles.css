@@ -1,6 +1,19 @@
 :root {
-    /* TODO: different width on different screen size */
-    --sidebar-width: 21rem;
+    --sidebar-width: 6rem;
+}
+
+/* > xl */
+@media (min-width: 1200px) {
+    :root {
+        --sidebar-width: 15.3rem;
+    }
+}
+
+/* > xxl */
+@media (min-width: 1920px) {
+    :root {
+        --sidebar-width: 21rem;
+    }
 }
 
 .sidebar {
