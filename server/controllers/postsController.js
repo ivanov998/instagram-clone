@@ -1,5 +1,4 @@
 import { StatusCodes } from "http-status-codes";
-
 import { nanoid } from "nanoid";
 
 import { BadRequestError } from "../utils/errors.js";
@@ -32,9 +31,24 @@ const createPost = async (req, res, next) => {
 }
 
 const getPost = async (req, res, next) => {
-    console.log(req);
-    // Empty controller
-    res.sendStatus(StatusCodes.OK);
+
+    try {
+        const { id } = req.params;
+        
+        // TODO: post id length to be moved into .env instead of hardcoding it;
+        if (!id || id.length < 12) {
+            throw new BadRequestError('Invalid URL');
+        }
+        const { rows: selectedRows } = await db.query(`SELECT * FROM posts WHERE url=$1`, [id]);
+
+        if (!selectedRows.length) {
+            throw new BadRequestError('Invalid URL');
+        }
+        
+        res.status(StatusCodes.OK).json({ post: selectedRows[0] });
+    } catch (error) {
+        next(error);
+    }
 }
 
 const updatePost = async (req, res, next) => {
