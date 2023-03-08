@@ -13,7 +13,8 @@ const NavItem = ({icon, text, link, dropdownId, className}) => {
         role="button" 
         id="dropdownMenuLink" 
         data-toggle="dropdown" 
-        aria-haspopup="true" classNamearia-expanded="false"
+        aria-haspopup="true"
+        aria-expanded="false"
     >
         <span className="icon-wrapper me-xl-3 d-block d-xl-inline-block mx-auto">
             <FontAwesomeIcon icon={icon} />

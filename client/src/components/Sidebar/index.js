@@ -30,7 +30,7 @@ const Sidebar = (props) => {
                 icon={navItem.icon} 
                 text={navItem.text} 
                 link={navItem.link}
-                className="my-2 mx-2 p-2 text-dark"
+                className="m-2 p-2 text-dark"
             />
         );
     

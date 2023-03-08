@@ -28,7 +28,7 @@ const BottomNavbar = () => {
       );
 
   return (
-    <div className="bottom-navbar w-100 position-fixed d-block d-md-none bg-white py-3 px-4">
+    <div className="bottom-navbar w-100 position-fixed d-block d-md-none bg-white py-3">
         <div className="align-items-center justify-content-around d-flex">
           {renderNavItems()}
         </div>
