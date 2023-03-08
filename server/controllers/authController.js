@@ -77,24 +77,6 @@ const login = async (req, res, next) => {
     }
 }
 
-const getCurrentUser = async (req, res, next) => {
-    try {
-
-        const userId = req.userId;
-        
-        const { rows } = await db.query(`SELECT username, email FROM users WHERE id=$1`, [userId]);
-        
-        if (!rows) {
-            throw new Error;
-        }
-        
-        const user = rows[0];
-        res.status(StatusCodes.OK).json(user);
-    } catch(error) {
-        next(error);
-    }
-}
-
 const logout = async (req, res, next) => {
 
     try {
@@ -105,4 +87,4 @@ const logout = async (req, res, next) => {
     }
 }
 
-export { register, login, getCurrentUser, logout }
+export { register, login, logout }
