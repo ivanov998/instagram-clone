@@ -26,8 +26,8 @@ const ProtectedRoute = (props) => {
 }
 
 const mapStateToProps = state => ({
-    authenticated: state.authReducer.authenticated,
-    userLoading: state.authReducer.userLoading
+    authenticated: state.auth.authenticated,
+    userLoading: state.user.userLoading
   })
   
 export default connect(mapStateToProps, actions)(ProtectedRoute);

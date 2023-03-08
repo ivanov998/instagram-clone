@@ -37,8 +37,8 @@ const Register = (props) => {
 }
 
 const mapStateToProps = state => ({
-  isLoading: state.authReducer.isLoading,
-  authFormData: state.authReducer.authFormData
+  isLoading: state.auth.isLoading,
+  authFormData: state.auth.authFormData
 })
 
 export default connect(mapStateToProps, actions)(Register);

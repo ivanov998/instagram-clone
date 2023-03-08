@@ -4,8 +4,8 @@ import authReducer from './services/reducers/authReducer';
 import userReducer from './services/reducers/userReducer';
 
 const reducers = combineReducers({
-    authReducer,
-    userReducer
+    auth: authReducer,
+    user: userReducer
 });
 
 export default reducers;

@@ -31,7 +31,7 @@ export const authFormChange = (name, value) => {
 
 export const login = () => async (dispatch, getState) => {
 
-    const user = getState().authReducer.authFormData;
+    const user = getState().auth.authFormData;
 
     const rules = {
         login: 'required|min:6',
@@ -68,7 +68,7 @@ export const login = () => async (dispatch, getState) => {
 
 export const register = () => async (dispatch, getState) => {
 
-    const registerData = getState().authReducer.authFormData;
+    const registerData = getState().auth.authFormData;
 
     const rules = {
         username: 'required|min:6',

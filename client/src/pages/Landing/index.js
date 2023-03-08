@@ -51,10 +51,10 @@ const Landing = (props) => {
 }
 
 const mapStateToProps = state => ({
-  isLoading: state.authReducer.isLoading,
-  formError: state.authReducer.formError,
-  authError: state.authReducer.authError,
-  authFormData: state.authReducer.authFormData
+  isLoading: state.auth.isLoading,
+  formError: state.auth.formError,
+  authError: state.auth.authError,
+  authFormData: state.auth.authFormData
 })
 
 export default connect(mapStateToProps, actions)(Landing);
