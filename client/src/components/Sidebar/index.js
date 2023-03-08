@@ -36,9 +36,9 @@ const Sidebar = (props) => {
     
     return (
         <div className="sidebar min-vh-100 py-1 position-fixed flex-column d-none d-md-flex">
-            <div className="logo-wrapper">
-                <Logo className="ms-4 mt-4 d-none d-xl-block" />
-                <div className="mobile-logo text-center mt-4 d-block d-xl-none">
+            <div className="logo-wrapper mt-4">
+                <Logo className="ms-4 d-none d-xl-block" />
+                <div className="mobile-logo text-center d-block d-xl-none">
                     <img src={mobileLogo} alt="logo" width="35px" height="35px" />
                 </div>
             </div>
