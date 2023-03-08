@@ -13,9 +13,10 @@ const apiLimiter = rateLimiter({
     message: 'Too many requests'
 });
 
-router.route('/create').post(apiLimiter, createPost);
-router.route('/get').get(getPost);
-router.route('/create').patch(updatePost);
-router.route('/delete').delete(deletePost);
+router.route('/create').post(auth, apiLimiter, createPost);
+// Get doesn't require authentication, posts should be visible to non-authenticated users
+router.route('/:id').get(getPost);
+router.route('/update/:id').patch(auth, updatePost);
+router.route('/delete/:id').delete(auth, deletePost);
 
 export default router;
