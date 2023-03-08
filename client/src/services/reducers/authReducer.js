@@ -16,8 +16,7 @@ const initialState = {
     isLoading: false,
     formError: '',
     authError: '',
-    authenticated: false,
-    user: {}
+    authenticated: false
 }
 
 const authReducer = (state = initialState, action) => {

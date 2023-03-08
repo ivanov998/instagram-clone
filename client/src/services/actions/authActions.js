@@ -5,15 +5,11 @@ import {
     SET_AUTH_ERROR,
     CLEAR_ERRORS,
     SET_USER_AUTHENTICATED,
-    CLEAR_USER_AUTHENTICATED,
-    SETUP_USER_BEGIN,
-    SETUP_USER_SUCCESS,
-    SETUP_USER_FAIL
+    CLEAR_USER_AUTHENTICATED
 } from "../constants/authConstants";
 import { allFieldsValidation } from "../utils/validation";
 
 import axios from "axios";
-import Cookies from 'js-cookie';
 
 const authApi = axios.create({
     baseURL: "http://localhost:5000/api/auth",
@@ -65,7 +61,7 @@ export const login = () => async (dispatch, getState) => {
             payload: error.response ? error.response.data.msg : error.message 
         });
     } finally {
-        dispatch(getCurrentUser())
+        dispatch({ type: SET_USER_AUTHENTICATED })
         dispatch({ type: SET_AUTH_LOADING, payload: false });
     }
 }
@@ -110,24 +106,4 @@ export const register = () => async (dispatch, getState) => {
 export const logout = () => async (dispatch, getState) => {
     await authApi.get('logout');
     return dispatch({ type: CLEAR_USER_AUTHENTICATED });
-}
-
-export const getCurrentUser = () => async (dispatch, getState) => {
-
-    const tokenCookie = Cookies.get('token');
-    
-    if (!tokenCookie) {
-        return;
-    }
-
-    dispatch({ type: SETUP_USER_BEGIN });
-
-    try {
-        const response = await authApi.get('getCurrentUser');
-        dispatch({ type: SET_USER_AUTHENTICATED });
-        dispatch({ type: SETUP_USER_SUCCESS, payload: response.data });
-    } catch(error) {
-        dispatch({ type: CLEAR_USER_AUTHENTICATED });
-        dispatch({ type: SETUP_USER_FAIL });
-    }
 }
