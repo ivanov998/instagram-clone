@@ -5,10 +5,7 @@ import {
     SET_AUTH_ERROR,
     CLEAR_ERRORS,
     SET_USER_AUTHENTICATED,
-    CLEAR_USER_AUTHENTICATED,
-    SETUP_USER_BEGIN,
-    SETUP_USER_SUCCESS,
-    SETUP_USER_FAIL
+    CLEAR_USER_AUTHENTICATED
 } from "../constants/authConstants";
 
 const initialState = {
@@ -56,23 +53,6 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 authenticated: false
-            }
-        case SETUP_USER_BEGIN:
-            return {
-                ...state,
-                userLoading: true
-            }
-        case SETUP_USER_SUCCESS:
-            return {
-                ...state,
-                userLoading: false,
-                user: action.payload
-            }
-        case SETUP_USER_FAIL:
-            return {
-                ...state,
-                userLoading: false,
-                user: []
             }
         default: 
             return state;
