@@ -96,8 +96,8 @@ export const logout = () => async (dispatch) => {
 
 const authUser = (endPoint, authData) => (dispatch) =>
     authApi.post(endPoint, authData).then(() => {
-        dispatch(getCurrentUser());
         dispatch({ type: SET_USER_AUTHENTICATED });
+        dispatch(getCurrentUser());
     }).catch((error) =>
          dispatch({ 
             type: SET_AUTH_ERROR,

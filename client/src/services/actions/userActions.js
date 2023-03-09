@@ -29,11 +29,17 @@ export const getCurrentUser = () => async (dispatch, getState) => {
         return;
     }
 
+    const userAuthenticated = getState().auth.authenticated;
+
     dispatch({ type: SETUP_USER_BEGIN });
 
     try {
         const response = await usersApi.get('current');
-        dispatch({ type: SET_USER_AUTHENTICATED });
+        
+        if (!userAuthenticated) {
+            dispatch({ type: SET_USER_AUTHENTICATED });
+        }
+
         dispatch({ type: SETUP_USER_SUCCESS, payload: response.data });
     } catch(error) {
         dispatch({ type: LOGOUT_USER });
