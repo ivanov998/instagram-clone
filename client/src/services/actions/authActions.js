@@ -53,17 +53,9 @@ export const login = () => async (dispatch, getState) => {
     }
 
     dispatch({ type: SET_AUTH_LOADING, payload: true });
-    
-    await authApi.post('login', user).then(() => {
-        dispatch(getCurrentUser());
-        dispatch({ type: SET_USER_AUTHENTICATED });
-    }).catch((error) =>
-         dispatch({ 
-            type: SET_AUTH_ERROR,
-            payload: error.response ? error.response.data.msg : error.message 
-        })
-    );
 
+    await dispatch(authUser("login", user));
+    
     dispatch({ type: SET_AUTH_LOADING, payload: false });
 }
 
@@ -92,19 +84,23 @@ export const register = () => async (dispatch, getState) => {
 
     dispatch({ type: SET_AUTH_LOADING, payload: true });
 
-    try {
-        await authApi.post('register', registerData);
-    } catch(error) {
-        return dispatch({ 
-            type: SET_AUTH_ERROR,
-            payload: error.response ? error.response.data.msg : error.message 
-        });
-    } finally {
-        dispatch({ type: SET_AUTH_LOADING, payload: false });
-    }
+    await dispatch(authUser("register", registerData));
+    
+    dispatch({ type: SET_AUTH_LOADING, payload: false });
 }
 
-export const logout = () => async (dispatch, getState) => {
+export const logout = () => async (dispatch) => {
     await authApi.get('logout');
     return dispatch({ type: LOGOUT_USER });
 }
+
+const authUser = (endPoint, authData) => (dispatch) =>
+    authApi.post(endPoint, authData).then(() => {
+        dispatch(getCurrentUser());
+        dispatch({ type: SET_USER_AUTHENTICATED });
+    }).catch((error) =>
+         dispatch({ 
+            type: SET_AUTH_ERROR,
+            payload: error.response ? error.response.data.msg : error.message 
+        })
+    );
