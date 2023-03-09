@@ -5,7 +5,7 @@ import {
     SET_AUTH_ERROR,
     CLEAR_ERRORS,
     SET_USER_AUTHENTICATED,
-    CLEAR_USER_AUTHENTICATED
+    LOGOUT_USER
 } from "../constants/authConstants";
 import { allFieldsValidation } from "../utils/validation";
 
@@ -105,5 +105,5 @@ export const register = () => async (dispatch, getState) => {
 
 export const logout = () => async (dispatch, getState) => {
     await authApi.get('logout');
-    return dispatch({ type: CLEAR_USER_AUTHENTICATED });
+    return dispatch({ type: LOGOUT_USER });
 }

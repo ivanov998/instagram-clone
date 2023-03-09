@@ -4,6 +4,8 @@ import {
     SETUP_USER_FAIL
 } from "../constants/userConstants";
 
+import { LOGOUT_USER } from "../constants/authConstants";
+
 const initialState = {
     userLoading: false,
     user: {}
@@ -26,7 +28,12 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 userLoading: false,
-                user: []
+                user: null
+            }
+        case LOGOUT_USER:
+            return {
+                ...state,
+                user: null
             }
         default: 
             return state;

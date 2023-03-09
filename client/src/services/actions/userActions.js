@@ -6,7 +6,7 @@ import {
 
 import {
     SET_USER_AUTHENTICATED,
-    CLEAR_USER_AUTHENTICATED
+    LOGOUT_USER
 } from "../constants/authConstants";
 
 import axios from "axios";
@@ -36,7 +36,7 @@ export const getCurrentUser = () => async (dispatch, getState) => {
         dispatch({ type: SET_USER_AUTHENTICATED });
         dispatch({ type: SETUP_USER_SUCCESS, payload: response.data });
     } catch(error) {
-        dispatch({ type: CLEAR_USER_AUTHENTICATED });
+        dispatch({ type: LOGOUT_USER });
         dispatch({ type: SETUP_USER_FAIL });
     }
 }

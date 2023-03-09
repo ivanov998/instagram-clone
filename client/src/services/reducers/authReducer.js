@@ -5,7 +5,7 @@ import {
     SET_AUTH_ERROR,
     CLEAR_ERRORS,
     SET_USER_AUTHENTICATED,
-    CLEAR_USER_AUTHENTICATED
+    LOGOUT_USER
 } from "../constants/authConstants";
 
 const initialState = {
@@ -49,7 +49,7 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 authenticated: true
             }
-        case CLEAR_USER_AUTHENTICATED:
+        case LOGOUT_USER:
             return {
                 ...state,
                 authenticated: false
