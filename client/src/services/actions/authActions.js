@@ -10,6 +10,7 @@ import {
 import { allFieldsValidation } from "../utils/validation";
 
 import axios from "axios";
+import { getCurrentUser } from "./userActions";
 
 const authApi = axios.create({
     baseURL: "http://localhost:5000/api/auth",
@@ -61,7 +62,8 @@ export const login = () => async (dispatch, getState) => {
             payload: error.response ? error.response.data.msg : error.message 
         });
     } finally {
-        dispatch({ type: SET_USER_AUTHENTICATED })
+        dispatch(getCurrentUser());
+        dispatch({ type: SET_USER_AUTHENTICATED });
         dispatch({ type: SET_AUTH_LOADING, payload: false });
     }
 }
