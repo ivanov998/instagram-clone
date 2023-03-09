@@ -7,19 +7,18 @@ import Logo from "../common/Logo";
 import mobileLogo from "../../assets/images/logo/mobile-logo.svg";
 import "./styles.css";
 
-
 const Sidebar = (props) => {
 
     const { logout } = props;
 
     const navItems = [
-        { icon: faHomeAlt, text: "Home", link: "#" },
-        { icon: faSearch, text: "Search", link: "#" },
+        { icon: faHomeAlt, text: "Home", link: "/" },
+        { icon: faSearch, text: "Search" },
         { icon: faCompass, text: "Explore", link: "#" },
         { icon: faPlay, text: "Reels", link: "#" },
         { icon: faPaperPlane, text: "Messages", link: "#" },
-        { icon: faHeart, text: "Notifications", link: "#" },
-        { icon: faPlusSquare, text: "Create", link: "#" },
+        { icon: faHeart, text: "Notifications" },
+        { icon: faPlusSquare, text: "Create" },
         { icon: faUserCircle, text: "Profile", link: "#" },
     ];
 
@@ -30,6 +29,7 @@ const Sidebar = (props) => {
                 icon={navItem.icon} 
                 text={navItem.text} 
                 link={navItem.link}
+                onClick={navItem.onClick}
                 className="m-2 p-2 text-dark"
             />
         );
@@ -48,9 +48,8 @@ const Sidebar = (props) => {
             <div className="ms-2 mb-2">
                 <NavItem 
                     icon={faBars} 
-                    text="More" 
-                    link="#" 
-                    dropdownId="more"
+                    text="More"
+                    dropdown="more"
                     className="my-2 mx-2 p-2 text-dark"
                 />
                 <div className="dropdown-menu" aria-labelledby="more">
