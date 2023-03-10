@@ -5,6 +5,7 @@ import Sidebar from "../../components/Sidebar";
 import TopNavbar from "../../components/TopNavbar";
 import BottomNavbar from "../../components/BottomNavbar";
 import "./styles.css";
+import Modals from "../../components/Modals";
 
 const MainLayout = () => {
   
@@ -12,6 +13,7 @@ const MainLayout = () => {
 
   return (
     <Container fluid className="g-0 d-flex">
+      <Modals />
       <Sidebar />
       <TopNavbar />
       <Container fluid className="content">
