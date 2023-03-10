@@ -9,7 +9,7 @@ import "./styles.css";
 
 const Sidebar = (props) => {
 
-    const { logout } = props;
+    const { openModal, logout } = props;
 
     const navItems = [
         { icon: faHomeAlt, text: "Home", link: "/" },
@@ -18,7 +18,7 @@ const Sidebar = (props) => {
         { icon: faPlay, text: "Reels", link: "#" },
         { icon: faPaperPlane, text: "Messages", link: "#" },
         { icon: faHeart, text: "Notifications" },
-        { icon: faPlusSquare, text: "Create" },
+        { icon: faPlusSquare, text: "Create", onClick: openModal },
         { icon: faUserCircle, text: "Profile", link: "#" },
     ];
 
