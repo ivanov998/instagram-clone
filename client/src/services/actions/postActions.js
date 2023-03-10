@@ -1,12 +1,23 @@
 import {
-    OPEN_CREATE_POST_MODAL,
-    CLOSE_CREATE_POST_MODAL
+    OPEN_POST_MODAL,
+    CLOSE_POST_MODAL,
+    POST_MODAL_FORM_CHANGE
 } from "../constants/postConstants";
 
-export const openModal = () => async (dispatch) => {
-    dispatch({ type: OPEN_CREATE_POST_MODAL });
+export const openPostModal = () => async (dispatch) => {
+    dispatch({ type: OPEN_POST_MODAL });
 }
 
-export const closeModal = () => async (dispatch) => {
-    dispatch({ type: CLOSE_CREATE_POST_MODAL });
+export const closePostModal = () => async (dispatch) => {
+    dispatch({ type: CLOSE_POST_MODAL });
+}
+
+export const postModalFormChange = (name, value) => {
+    let formData = {};
+    formData[name] = value;
+
+    return {
+        type: POST_MODAL_FORM_CHANGE,
+        payload: formData
+    }
 }

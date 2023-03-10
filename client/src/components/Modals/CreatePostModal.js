@@ -1,7 +1,8 @@
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import FormInput from "../common/FormInput"
 
-const CreatePostModal = ({show, onHide}) => {
+const CreatePostModal = ({show, onHide, handleInputChange}) => {
   return (
     <Modal
       size="lg"
@@ -16,7 +17,12 @@ const CreatePostModal = ({show, onHide}) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-
+        <FormInput 
+          type="text"
+          name="caption"
+          placeholder="Caption"
+          onInputChange={(name, value) => handleInputChange(name, value)}
+        />
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={onHide}>Close</Button>

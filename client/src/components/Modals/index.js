@@ -6,19 +6,24 @@ import actions from "../../actions";
 const Modals = (props) => {
 
     const { 
-        isModalOpen,
-        closeModal
+        isPostModalOpen,
+        closePostModal,
+        postModalFormChange
     } = props;
 
     return (
         <>
-            <CreatePostModal show={isModalOpen} onHide={closeModal} />
+            <CreatePostModal 
+                show={isPostModalOpen} 
+                onHide={closePostModal} 
+                handleInputChange={postModalFormChange}    
+            />
         </>
     );
 }
 
 const mapStateToProps = (state) => ({
-    isModalOpen: state.post.isModalOpen
+    isPostModalOpen: state.post.isPostModalOpen
 })
 
 export default connect(mapStateToProps, actions)(Modals);
