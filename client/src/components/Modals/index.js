@@ -8,7 +8,8 @@ const Modals = (props) => {
     const { 
         isPostModalOpen,
         closePostModal,
-        postModalFormChange
+        postModalFormChange,
+        postModalHandleSubmit
     } = props;
 
     return (
@@ -16,7 +17,8 @@ const Modals = (props) => {
             <CreatePostModal 
                 show={isPostModalOpen} 
                 onHide={closePostModal} 
-                handleInputChange={postModalFormChange}    
+                handleInputChange={postModalFormChange}
+                handleSubmit={postModalHandleSubmit}
             />
         </>
     );

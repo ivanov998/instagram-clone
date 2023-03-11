@@ -1,12 +1,14 @@
 import {
     OPEN_POST_MODAL,
     CLOSE_POST_MODAL,
-    POST_MODAL_FORM_CHANGE
+    POST_MODAL_FORM_CHANGE,
+    SET_MODAL_FORM_ERROR
 } from "../constants/postConstants";
 
 const initialState = {
     isPostModalOpen: false,
-    modalFormData: {}
+    modalFormData: {},
+    modalFormError: ''
 }
 
 const postReducer = (state = initialState, action) => {
@@ -26,6 +28,11 @@ const postReducer = (state = initialState, action) => {
             return {
                 ...state,
                 modalFormData: action.payload
+            }
+        case SET_MODAL_FORM_ERROR:
+            return {
+                ...state,
+                modalFormError: action.payload
             }
         default:
             return state

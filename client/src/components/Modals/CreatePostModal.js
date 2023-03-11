@@ -1,8 +1,16 @@
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+
 import FormInput from "../common/FormInput"
 
-const CreatePostModal = ({show, onHide, handleInputChange}) => {
+const CreatePostModal = ({show, onHide, handleInputChange, handleSubmit}) => {
+
+  const _handleSubmit = (e) => {
+      e.preventDefault();
+      handleSubmit();
+  }
+
   return (
     <Modal
       size="lg"
@@ -13,16 +21,19 @@ const CreatePostModal = ({show, onHide, handleInputChange}) => {
     >
       <Modal.Header>
         <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
+          Create new post
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <FormInput 
-          type="text"
-          name="caption"
-          placeholder="Caption"
-          onInputChange={(name, value) => handleInputChange(name, value)}
-        />
+        <Form onSubmit={_handleSubmit}>
+          <FormInput 
+            type="text"
+            name="caption"
+            placeholder="Caption"
+            onInputChange={(name, value) => handleInputChange(name, value)}
+          />
+          <Button variant="primary" type="submit" className="w-100 py-1">Create</Button>
+        </Form>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={onHide}>Close</Button>
