@@ -9,7 +9,9 @@ import "./styles.css";
 
 const Sidebar = (props) => {
 
-    const { openPostModal, logout } = props;
+    const { openPostModal, logout, user } = props;
+
+    const profileUrl = `/${user.username}`;
 
     const navItems = [
         { icon: faHomeAlt, text: "Home", link: "/" },
@@ -19,7 +21,7 @@ const Sidebar = (props) => {
         { icon: faPaperPlane, text: "Messages", link: "#" },
         { icon: faHeart, text: "Notifications" },
         { icon: faPlusSquare, text: "Create", onClick: openPostModal },
-        { icon: faUserCircle, text: "Profile", link: "#" },
+        { icon: faUserCircle, text: "Profile", link: profileUrl },
     ];
 
     const renderNavItems = () => 
@@ -60,4 +62,8 @@ const Sidebar = (props) => {
   );
 }
 
-export default connect(null, actions)(Sidebar);
+const mapStateToProps = (state) => ({
+    user: state.user.user
+})
+
+export default connect(mapStateToProps, actions)(Sidebar);
