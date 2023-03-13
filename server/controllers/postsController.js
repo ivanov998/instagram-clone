@@ -5,9 +5,9 @@ import { BadRequestError } from "../utils/errors.js";
 import db from "../utils/db.js";
 
 const createPost = async (req, res, next) => {
-
     try {
-        let { caption } = req.body;
+
+        const { caption } = req.body;
         
         if (!caption) {
             throw new BadRequestError('Please provide all values');
@@ -30,22 +30,36 @@ const createPost = async (req, res, next) => {
     }
 }
 
-const getPost = async (req, res, next) => {
-
+const getPostByUrl = async (req, res, next) => {
     try {
-        const { id } = req.params;
+
+        const { url } = req.params;
         
         // TODO: post id length to be moved into .env instead of hardcoding it;
-        if (!id || id.length < 12) {
+        if (!url || url.length < 12) {
             throw new BadRequestError('Invalid URL');
         }
-        const { rows: selectedRows } = await db.query(`SELECT * FROM posts WHERE url=$1`, [id]);
+        const { rows: selectedRows } = await db.query(`SELECT * FROM posts WHERE url=$1`, [url]);
 
         if (!selectedRows.length) {
             throw new BadRequestError('Invalid URL');
         }
         
         res.status(StatusCodes.OK).json({ post: selectedRows[0] });
+    } catch (error) {
+        next(error);
+    }
+}
+
+const getAllPostsForUser = async (req, res, next) => {
+    try {
+
+        const { id } = req.params;
+        
+        // For now, it is safe to select everything;
+        const { rows } = await db.query(`SELECT * FROM posts WHERE user_id=$1`, [id]);
+        
+        res.status(StatusCodes.OK).json({ posts: rows });
     } catch (error) {
         next(error);
     }
@@ -61,4 +75,4 @@ const deletePost = async (req, res, next) => {
     res.sendStatus(StatusCodes.OK);
 }
 
-export { createPost, getPost, updatePost, deletePost }
+export { createPost, getPostByUrl, getAllPostsForUser, updatePost, deletePost }

@@ -10,3 +10,7 @@ body {
   src: local("Billabong"),
     url("./assets/fonts/Billabong.ttf") format("truetype");
 }
+
+ul {
+  list-style: none;
+}

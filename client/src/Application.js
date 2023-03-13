@@ -5,6 +5,7 @@ import actions from './actions';
 import MainLayout from "./layouts/Main";
 import ProtectedRoute from "./services/routes/ProtectedRoute";
 import Home from "./pages/Home";
+import Profile from "./pages/Profile";
 import Explore from "./pages/Explore";
 import Register from "./pages/Register";
 
@@ -23,6 +24,7 @@ function Application() {
           </ProtectedRoute>
           }>
           <Route index element={<Home />} />
+          <Route path="*" element={<Profile />} />
         </Route>
 
         {/* <Route path="*" element={<Error />} /> */}
