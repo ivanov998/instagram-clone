@@ -1,0 +1,15 @@
+/* If size is not set, go with md */
+.avatar img, .avatar.md img {
+    width: 60px;
+    height: 60px;
+}
+
+.avatar.sm img {
+    width: 40px;
+    height: 40px;
+}
+
+.avatar.lg img {
+    width: 150px;
+    height: 150px;
+}

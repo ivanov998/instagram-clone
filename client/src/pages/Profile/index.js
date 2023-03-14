@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import Avatar from "../../components/common/Avatar";
 import "./styles.css";
 
 const Profile = () => {
@@ -10,9 +11,7 @@ const Profile = () => {
   return (
     <div className="profile-wrapper mx-auto">
       <div className="profile-header d-flex mt-5">
-        <div className="avatar mx-5">
-          <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg" />
-        </div>
+        <Avatar className="mx-5" size="lg" />
         <div className="user-overview mx-5">
           <div className="user">
             <h5>username</h5>

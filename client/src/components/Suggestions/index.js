@@ -1,4 +1,4 @@
-import "./styles.css";
+import Avatar from "../common/Avatar";
 
 const Suggestions = ({user}) => {
 
@@ -8,9 +8,7 @@ const Suggestions = ({user}) => {
     <div className="suggestions-column">
       <div className="profile">
         <div className="flex-row align-items-center d-flex">
-          <div className={`avatar ${avatar ? "" : "default"} overflow-hidden`}>
-            {avatar && <img src={avatar}  alt="" />}
-          </div>
+          <Avatar link={username} />
           <div className="username mx-3">
             <a href="#">{username}</a>
           </div>
