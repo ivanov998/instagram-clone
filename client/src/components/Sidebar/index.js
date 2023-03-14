@@ -1,12 +1,12 @@
-import { faHomeAlt, faSearch, faCompass, faPlay, faPaperPlane, faHeart, faPlusSquare, faUserCircle, faBars } from "@fortawesome/free-solid-svg-icons";
+import { faHomeAlt, faSearch, faCompass, faPlay, faPaperPlane, faHeart, faPlusSquare, faBars } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 
 import actions from "../../actions";
 import NavItem from "../common/NavItem";
 import Logo from "../common/Logo";
+import AvatarIcon from "../common/AvatarIcon";
 import mobileLogo from "../../assets/images/logo/mobile-logo.svg";
 import "./styles.css";
-import Avatar from "../common/Avatar";
 
 const Sidebar = (props) => {
 
@@ -14,7 +14,7 @@ const Sidebar = (props) => {
 
     const profileUrl = `/${user.username}`;
 
-    const avatarIcon = <Avatar size="icon" />;
+    const avatarIcon = <AvatarIcon />;
 
     const navItems = [
         { icon: faHomeAlt, text: "Home", link: "/" },

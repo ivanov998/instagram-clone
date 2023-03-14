@@ -1,11 +1,12 @@
-import { faHomeAlt, faSearch, faCompass, faPlay, faPaperPlane, faHeart, faPlusSquare, faUserCircle, faBars } from "@fortawesome/free-solid-svg-icons";
+import { faHomeAlt, faCompass, faPlay, faPaperPlane, faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 
-import Logo from "../common/Logo";
 import NavItem from "../common/NavItem";
-import SearchBar from "../common/SearchBar";
+import AvatarIcon from "../common/AvatarIcon";
 import "./styles.css";
 
 const BottomNavbar = () => {
+
+  const avatarIcon = <AvatarIcon />;
 
   const navItems = [
     { icon: faHomeAlt, text: "Home", link: "#" },
@@ -13,7 +14,7 @@ const BottomNavbar = () => {
     { icon: faPlay, text: "Reels", link: "#" },
     { icon: faPlusSquare, text: "Create", link: "#" },
     { icon: faPaperPlane, text: "Messages", link: "#" },
-    { icon: faUserCircle, text: "Profile", link: "#" },
+    { icon: avatarIcon, text: "Profile", link: "#" },
 ];
 
   const renderNavItems = () => 
