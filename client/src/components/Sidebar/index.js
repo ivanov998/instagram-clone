@@ -6,12 +6,15 @@ import NavItem from "../common/NavItem";
 import Logo from "../common/Logo";
 import mobileLogo from "../../assets/images/logo/mobile-logo.svg";
 import "./styles.css";
+import Avatar from "../common/Avatar";
 
 const Sidebar = (props) => {
 
     const { openPostModal, logout, user } = props;
 
     const profileUrl = `/${user.username}`;
+
+    const avatarIcon = <Avatar size="icon" />;
 
     const navItems = [
         { icon: faHomeAlt, text: "Home", link: "/" },
@@ -21,7 +24,7 @@ const Sidebar = (props) => {
         { icon: faPaperPlane, text: "Messages", link: "#" },
         { icon: faHeart, text: "Notifications" },
         { icon: faPlusSquare, text: "Create", onClick: openPostModal },
-        { icon: faUserCircle, text: "Profile", link: profileUrl },
+        { icon: avatarIcon, text: "Profile", link: profileUrl },
     ];
 
     const renderNavItems = () => 
